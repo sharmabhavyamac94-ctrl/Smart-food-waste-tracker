@@ -10,6 +10,7 @@ const CLEAR_THRESHOLD = 0.024;
 const CONFIRM_MS = 520;
 const MAX_QUEUE = 8;
 const MAX_WORKERS = 2;
+const PI_CAMERA_URL = "http://192.168.1.202:5000";
 async function api(path, init) {
     try {
         const r = await fetch(path, init);
