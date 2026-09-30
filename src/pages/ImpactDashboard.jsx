@@ -409,10 +409,7 @@ const ImpactDashboard = () => {
 
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginTop: '1.25rem', paddingTop: '1rem', borderTop: '1px solid var(--border)' }}>
               <div>
-                <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Projected Annual Savings</span>
-                <div style={{ fontSize: '1.4rem', fontWeight: '800', color: '#f59e0b', marginTop: '2px' }}>
-                  ₹{simulatedAnnualValue.toLocaleString()}
-                </div>
+                
               </div>
               <div>
                 <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Annual Carbon Avoided</span>

@@ -145,18 +145,19 @@ export default function MealEntry() {
         }
 
         if (
-          !response.ok ||
-          data.weightKg == null
-        ) {
-          setLiveWeightStatus('waiting');
+       !response.ok ||
+       data.weightKg == null
+     ) {
+      setLiveWeightKg(0);
+      setLiveWeightStatus('waiting');
 
-          timer = setTimeout(
-            fetchLiveWeight,
-            500
-          );
+        timer = setTimeout(
+       fetchLiveWeight,
+       500
+       );
 
-          return;
-        }
+  return;
+}
 
         const weight = Number(
           data.weightKg
@@ -2859,9 +2860,10 @@ const MealTableAlignmentStyles = () => (
     }
 
     .meal-page-premium .subpage-title {
-      font-weight: 850;
-      letter-spacing: -.035em;
-    }
+  font-weight: 850;
+  font-size: 340%;
+  letter-spacing: -.035em;
+}
 
     .meal-page-premium .eyebrow {
       color: #059669;
