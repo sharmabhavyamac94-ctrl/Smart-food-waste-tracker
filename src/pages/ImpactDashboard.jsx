@@ -20,7 +20,7 @@ const ImpactDashboard = () => {
   // Simulated Annual Impact Calculation
   const totalPreparedWeekly = (allLogs || []).slice(-14).reduce((acc, l) => acc + (Number(l.prepared) || 0), 0) / 2 || 200;
   const simulatedWeeklySavedPortions = Math.round(totalPreparedWeekly * (reductionTargetPct / 100));
-  const simulatedAnnualValue = simulatedWeeklySavedPortions * 52 * 28;
+
   const simulatedAnnualCo2 = Number((simulatedWeeklySavedPortions * 0.4 * 2.5 * 52).toFixed(0));
 
   // Milestone Badges Logic
@@ -166,11 +166,11 @@ const ImpactDashboard = () => {
             <span style={{ fontSize: '1.5rem' }}>🚚</span>
             <div>
               <strong style={{ color: '#92400e', fontSize: '0.95rem' }}>
-                Active Rescue Pipeline: {impact.activePipelinePortions} portions (~{impact.potentialDivertedKg} kg)
+                
               </strong>
               <p style={{ fontSize: '0.8rem', color: '#b45309', marginTop: '2px' }}>
-                Listed and available for NGO pickup. Completing these pickups will unlock an additional <strong>₹{impact.potentialValue}</strong> value and prevent <strong>{impact.potentialCo2e} kg CO₂e</strong>.
-              </p>
+  Listed and available for NGO pickup. Completing these pickups will prevent <strong>{impact.potentialCo2e} kg CO₂e</strong>.
+</p>
             </div>
           </div>
         </div>
@@ -206,19 +206,6 @@ const ImpactDashboard = () => {
           </div>
         </div>
 
-        {/* Financial Value Saved */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border)', borderTop: '4px solid #f59e0b', borderRadius: 'var(--radius-md)', padding: '1.25rem', boxShadow: 'var(--shadow-sm)' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <span style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--text-muted)', letterSpacing: '0.05em' }}>ESTIMATED VALUE SAVED</span>
-            <span style={{ fontSize: '1.35rem' }}>💰</span>
-          </div>
-          <div style={{ fontSize: '2rem', fontWeight: '800', color: '#f59e0b', marginTop: '8px' }}>
-            ₹{impact.estimatedFinancialValue.toLocaleString()}
-          </div>
-          <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '4px' }}>
-            Estimated kitchen procurement value
-          </div>
-        </div>
 
         {/* CO2e Emissions Avoided */}
         <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border)', borderTop: '4px solid #8b5cf6', borderRadius: 'var(--radius-md)', padding: '1.25rem', boxShadow: 'var(--shadow-sm)' }}>
@@ -301,49 +288,7 @@ const ImpactDashboard = () => {
 
       {/* Row 2: Cumulative Impact Trajectory + Sustainability Badges */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(420px, 1fr))', gap: '1.5rem' }}>
-        {/* Cumulative Trajectory */}
-        <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border)', borderRadius: 'var(--radius-md)', padding: '1.5rem', boxShadow: 'var(--shadow-sm)' }}>
-          <div style={{ marginBottom: '1rem' }}>
-            <h3 style={{ fontSize: '1.15rem', fontWeight: '700', color: 'var(--text-main)' }}>📈 Cumulative Impact Trajectory</h3>
-            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '2px' }}>Cumulative growth in meals rescued and greenhouse gas emissions avoided</p>
-          </div>
-
-          {timeSeries.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '3.5rem 1rem', color: 'var(--text-muted)', fontSize: '0.9rem', backgroundColor: 'var(--surface)', borderRadius: '8px', border: '1px dashed var(--border)' }}>
-              <span style={{ fontSize: '2rem', display: 'block', marginBottom: '8px' }}>🌱</span>
-              <strong>No completed pickups logged yet.</strong>
-              <p style={{ fontSize: '0.8rem', marginTop: '4px', maxWidth: '360px', margin: '4px auto 0' }}>
-                When partner NGOs accept and complete surplus food pickups from your hostel, real-time trajectory curves will render here.
-              </p>
-            </div>
-          ) : (
-            <div style={{ height: '280px', width: '100%', minWidth: 0 }}>
-              <ResponsiveContainer width="100%" height={280}>
-                <AreaChart data={timeSeries} margin={{ top: 10, right: 30, left: -10, bottom: 5 }}>
-                  <defs>
-                    <linearGradient id="colorMeals" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#10b981" stopOpacity={0.8}/>
-                      <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
-                    </linearGradient>
-                    <linearGradient id="colorCo2" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.8}/>
-                      <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0}/>
-                    </linearGradient>
-                  </defs>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="var(--border)" />
-                  <XAxis dataKey="date" stroke="var(--text-muted)" fontSize={11} />
-                  <YAxis stroke="var(--text-muted)" fontSize={11} />
-                  <Tooltip 
-                    formatter={(val, name) => [`${val}`, name === 'meals' ? 'Meals Rescued' : 'kg CO2e Avoided']}
-                    contentStyle={{ backgroundColor: '#111827', borderColor: 'transparent', borderRadius: '8px', color: '#fff' }}
-                  />
-                  <Area type="monotone" dataKey="meals" stroke="#10b981" fillOpacity={1} fill="url(#colorMeals)" name="Meals Rescued" />
-                  <Area type="monotone" dataKey="co2eAvoided" stroke="#8b5cf6" fillOpacity={1} fill="url(#colorCo2)" name="kg CO2e Avoided" />
-                </AreaChart>
-              </ResponsiveContainer>
-            </div>
-          )}
-        </div>
+       
 
         {/* Milestone Achievements */}
         <div style={{ backgroundColor: '#ffffff', border: '1px solid var(--border)', borderRadius: 'var(--radius-md)', padding: '1.5rem', boxShadow: 'var(--shadow-sm)' }}>

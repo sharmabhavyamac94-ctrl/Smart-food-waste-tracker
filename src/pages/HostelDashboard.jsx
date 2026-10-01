@@ -151,18 +151,7 @@ const HostelDashboard = () => {
             maxWidth: 'fit-content'
           }}
         >
-          <Link
-            to="/hostel-dashboard"
-            className="btn btn-secondary"
-            style={{
-              padding: '9px 14px',
-              fontSize: '0.84rem',
-              whiteSpace: 'nowrap',
-              flex: '0 1 auto'
-            }}
-          >
-            📊 Deep Analytics
-          </Link>
+          
 
           <Link
             to="/hostel-dashboard/ai-analytics"
@@ -347,8 +336,8 @@ const HostelDashboard = () => {
           </span>
 
           <p className="kpi-value">
-            {kpis.totalPrepared}
-          </p>
+  {Number(kpis.totalPrepared).toFixed(3).replace(/\.?0+$/, '')}
+</p>
 
           <div className="kpi-icon">
             🍽️
@@ -361,8 +350,8 @@ const HostelDashboard = () => {
           </span>
 
           <p className="kpi-value">
-            {kpis.totalConsumed}
-          </p>
+  {Number(kpis.totalConsumed).toFixed(3).replace(/\.?0+$/, '')}
+</p>
 
           <div className="kpi-icon">
             ✅
@@ -375,8 +364,8 @@ const HostelDashboard = () => {
           </span>
 
           <p className="kpi-value">
-            {kpis.totalSurplus}
-          </p>
+  {Number(kpis.totalSurplus).toFixed(3).replace(/\.?0+$/, '')}
+</p>
 
           <div className="kpi-icon">
             🍲
@@ -393,8 +382,8 @@ const HostelDashboard = () => {
           </span>
 
           <p className="kpi-value">
-            {kpis.wasteRate}%
-          </p>
+  {Number(kpis.wasteRate).toFixed(1).replace(/\.?0+$/, '')}%
+</p>
 
           <div className="kpi-icon">
             📉

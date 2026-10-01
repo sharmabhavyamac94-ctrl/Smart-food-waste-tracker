@@ -243,7 +243,7 @@ const Analytics = () => {
             <span style={{ fontSize: '1.25rem' }}>🍲</span>
           </div>
           <div style={{ fontSize: '1.85rem', fontWeight: '800', color: 'var(--text-main)', marginTop: '8px' }}>
-            {metrics.totalPrepared} <span style={{ fontSize: '0.85rem', fontWeight: '500', color: 'var(--text-muted)' }}>portions</span>
+            {Number(metrics.totalPrepared).toFixed(3)} <span style={{ fontSize: '0.85rem', fontWeight: '500', color: 'var(--text-muted)' }}>portions</span>
           </div>
           <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '6px' }}>
             Consumption: <strong style={{ color: '#10b981' }}>{metrics.consumptionRate}%</strong>
@@ -257,7 +257,7 @@ const Analytics = () => {
             <span style={{ fontSize: '1.25rem' }}>🍽️</span>
           </div>
           <div style={{ fontSize: '1.85rem', fontWeight: '800', color: '#10b981', marginTop: '8px' }}>
-            {metrics.totalConsumed} <span style={{ fontSize: '0.85rem', fontWeight: '500', color: 'var(--text-muted)' }}>portions</span>
+     {Number(metrics.totalConsumed).toFixed(3)}        <span style={{ fontSize: '0.85rem', fontWeight: '500', color: 'var(--text-muted)' }}>portions</span>
           </div>
           <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '6px' }}>
             Eaten by students/residents
@@ -290,7 +290,7 @@ const Analytics = () => {
             <span style={{ fontSize: '1.25rem' }}>🤝</span>
           </div>
           <div style={{ fontSize: '1.85rem', fontWeight: '800', color: '#8b5cf6', marginTop: '8px' }}>
-            {metrics.redistributionRate}%
+            {Number(metrics.redistributionRate).toFixed(1)}%
           </div>
           <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '6px' }}>
             {metrics.totalDiverted} portions rescued by NGOs
